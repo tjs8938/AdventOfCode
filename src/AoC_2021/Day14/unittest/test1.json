@@ -1,0 +1,5 @@
+{
+  "a": "1588",
+  "b": "2188189693529",
+  "input_data": "NNCB\n\nCH -> B\nHH -> N\nCB -> H\nNH -> C\nHB -> C\nHC -> B\nHN -> C\nNN -> C\nBH -> H\nNC -> B\nNB -> B\nBN -> B\nBB -> N\nBC -> B\nCC -> N\nCN -> C"
+}

@@ -1,0 +1,1 @@
+sed -n '/\(..\).*\1/p' input.txt | sed -n '/\(.\).\1/p' | wc -l

@@ -1,0 +1,4 @@
+mod('b', 'inc', 5) if get_value('a') > 1 else 0
+mod('a', 'inc', 1) if get_value('b') < 5 else 0
+mod('c', 'dec', -10) if get_value('a') >= 1 else 0
+mod('c', 'inc', -20) if get_value('c') == 10 else 0

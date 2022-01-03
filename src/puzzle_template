@@ -1,0 +1,13 @@
+from src.aoc_frame import run_part
+
+
+def part_a(input_data: str) -> str:
+    return 'A'
+
+
+def part_b(input_data: str) -> str:
+    return 'B'
+
+
+run_part(part_a, 'a', {year}, {day})
+# run_part(part_b, 'b', {year}, {day})

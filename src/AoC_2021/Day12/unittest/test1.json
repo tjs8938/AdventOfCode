@@ -1,0 +1,5 @@
+{
+  "a": "10",
+  "b": "36",
+  "input_data": "start-A\nstart-b\nA-c\nA-b\nb-d\nA-end\nb-end"
+}
