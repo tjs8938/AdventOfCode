@@ -1,5 +1,4 @@
 import copy
-import dataclasses
 import heapq
 from dataclasses import dataclass
 from typing import List, Set
@@ -36,23 +35,6 @@ class State:
     rooms: List[str]
     hall: str = '...........'
     cost: int = 0
-
-    def potential_cost(self) -> int:
-        cost = self.cost
-        for idx, symbol in enumerate(self.hall):
-            if symbol != '.':
-                target = l_to_idx(symbol) * 2 + 2
-                dist = abs(target - idx) + 1
-                cost += dist * pow(10, l_to_idx(symbol))
-
-        for idx, room in enumerate(self.rooms):
-            room_loc = idx * 2 + 2
-            for c_idx, symbol in enumerate(room):
-                target_loc = l_to_idx(symbol) * 2 + 2
-                dist = abs(room_loc - target_loc) + 2
-                dist += c_idx
-                cost += dist * pow(10, l_to_idx(symbol))
-        return cost
 
     def __lt__(self, other):
         return self.cost < other.cost
@@ -136,11 +118,6 @@ def solve(in_rooms: List[str]) -> str:
                 # the hall is clear
                 if len(hall_path) == hall_path.count('.'):
 
-                    # Check for deadlock
-                    target_idx = l_to_idx(cur_l) * 2 + 2
-                    # the left and right side of that path that cur_l needs to take to its destination
-                    blocked_l, blocked_r = (target_idx, hall_idx) if target_idx < hall_idx else (hall_idx, target_idx)
-
                     move_length = len(hall_path) + room_size - len(room)
                     move_cost = move_length * pow(10, l_to_idx(cur_l))
 
@@ -149,13 +126,6 @@ def solve(in_rooms: List[str]) -> str:
                     new_state.rooms[room_idx] = new_state.rooms[room_idx][1:]
                     new_state.cost += move_cost
 
-                    # if any([other < hall_idx < other_target or other_target < hall_idx < other
-                    #         for other, other_target in map(lambda m: (m, l_to_idx(path.hall[m]) * 2 + 2),
-                    #                                        filter(lambda n: blocked_l < n < blocked_r
-                    #                                                         and path.hall[n] != '.', hall_options))]):
-                    #     # some amphipod on the left side of the blocked space needs to get to the right side
-                    #     continue
-
                     if new_state not in states_seen:
                         states_seen.add(new_state)
                         heapq.heappush(paths, new_state)
@@ -163,5 +133,5 @@ def solve(in_rooms: List[str]) -> str:
     return '0'
 
 
-run_part(part_a, 'a', 2021, 23)
-# run_part(part_b, 'b', 2021, 23)
+# run_part(part_a, 'a', 2021, 23)
+run_part(part_b, 'b', 2021, 23)

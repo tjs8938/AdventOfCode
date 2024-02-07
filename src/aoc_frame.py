@@ -8,8 +8,8 @@ from aocd import submit
 from aocd.models import Puzzle, User
 
 user_tokens = {
-    'Personal gmail': '53616c7465645f5f39fa992395f5f79a18f10ba37de4c53667ec0d893cff4e7f4acf9a2a63c87830e20499f4347aea24',
-    'Solu gmail': '53616c7465645f5f639e216085d9afc12bfbbfe6389ed40c3b8c287f77ba9ffb6716e9a787895bd8302785d0b5c41389'}
+    'Personal gmail': '53616c7465645f5f5dfb60fe167571b808233e37a155356b8d7a5bff35c7cad035ac48b72ee67fb75b6d47891c65d7db5ccbd9de408e13011b659d7950e150d1',
+    'Solu gmail': '53616c7465645f5ffc7a5b1e3314922dfa8d99a67ee81ece736a52c29674200e3769e3d145dc5b4b474fae38864e3e76964b878ddf431ce3f9d9dc3bec58c544'}
 
 
 def frame_print(output: str):
@@ -62,3 +62,17 @@ def gen_challenge_files(year: int):
                     open('puzzle_template') as template_file:
                 template = template_file.read()
                 print(template.format(year=year, day=day), file=output_file)
+
+
+def gen_challenge_files_kotlin(year: int):
+    for day in range(9, 26):
+        day_str = "Day{:02d}".format(day)
+
+        file_path = os.path.join('AoC_' + str(year), day_str + '.kt')
+        if not os.path.isfile(file_path) or os.stat(file_path).st_size == 0:
+            with open(file_path, 'w') as output_file,  open('kotlin_template') as template_file:
+                template = template_file.read()
+                print(template.format(year=year, day=day, class_name=day_str), file=output_file)
+
+
+gen_challenge_files_kotlin(2022)

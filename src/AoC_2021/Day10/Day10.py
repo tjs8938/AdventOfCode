@@ -52,6 +52,6 @@ def part_b(input_data: str) -> str:
     return str(scores[int(len(scores) // 2)])
 
 
-# run_part(part_a, 'a', 2021, 10)
+run_part(part_a, 'a', 2021, 10)
 run_part(part_b, 'b', 2021, 10)
 

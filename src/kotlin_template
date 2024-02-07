@@ -1,0 +1,24 @@
+package AdventOfCodeKotlin.puzzles.AoC{year}
+
+import AdventOfCodeKotlin.framework.PuzzleInputProvider
+import AdventOfCodeKotlin.framework.Runner
+
+
+class {class_name} {{
+    companion object {{
+        fun part1(puzzle: PuzzleInputProvider): String {{
+
+            return ""
+        }}
+
+        fun part2(puzzle: PuzzleInputProvider): String {{
+            return ""
+        }}
+    }}
+}}
+
+
+fun main() {{
+    Runner.solve({year}, {day}, part1 = {class_name}::part1)
+//    Runner.solve({year}, {day}, part2 = {class_name}::part2)
+}}
